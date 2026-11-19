@@ -1,0 +1,7 @@
+(function(root){
+  'use strict';let db;
+  function open(){return new Promise((resolve,reject)=>{if(!root.indexedDB)return reject(Error('Browser storage is unavailable. Use a regular browser window with storage enabled.'));const req=indexedDB.open('returnguard',1);req.onupgradeneeded=()=>req.result.createObjectStore('state');req.onerror=()=>reject(req.error);req.onblocked=()=>reject(Error('Close other ReturnGuard tabs and reopen the app.'));req.onsuccess=()=>{db=req.result;db.onversionchange=()=>db.close();resolve();};});}
+  function read(){return new Promise((resolve,reject)=>{const req=db.transaction('state').objectStore('state').get('purchases');req.onsuccess=()=>resolve(req.result||{revision:0,purchases:[]});req.onerror=()=>reject(req.error);});}
+  function write(purchases,revision){return new Promise((resolve,reject)=>{const tx=db.transaction('state','readwrite');const store=tx.objectStore('state');let result,error;const req=store.get('purchases');req.onsuccess=()=>{const current=req.result||{revision:0};if(current.revision!==revision){error=Error('Another tab changed your data. Close this dialog and refresh before trying again.');tx.abort();return;}result={revision:revision+1,purchases};store.put(result,'purchases');};tx.oncomplete=()=>resolve(result);tx.onabort=tx.onerror=()=>reject(error||tx.error||Error('Your changes could not be saved.'));});}
+  root.RGStorage={open,read,write};
+})(globalThis);

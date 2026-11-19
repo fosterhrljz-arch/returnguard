@@ -1,0 +1,15 @@
+/* Photographic demo assets preserve their natural proportions. */
+.demo-photo{background-size:auto 100%;background-position:center;background-color:#d5d5d7}
+.demo-photo.p0{background-image:url('assets/headphones.png');background-position:center}
+.demo-photo.p1{background-image:url('assets/sneakers.png');background-position:center}
+.demo-photo.p2{background-image:url('assets/espresso.png');background-position:center}
+.details-photo.demo-photo{background-size:contain}
+.demo-notice{margin-bottom:14px}.deadline-banner{margin-bottom:20px}
+.card-dates{margin-top:12px;padding-top:12px}.card-content{padding-top:14px;padding-bottom:14px}
+.status{margin-top:10px}.metric-label{font-size:13px}.metric strong{font-size:34px}
+.nav button,.data-nav{font-size:14px}.card-store{font-size:13px}.date-row{font-size:12px}
+.btn{font-size:14px}.chip{font-size:13px}.card-content h3{font-size:18px}.summary{padding:18px 0}
+.page-head{margin-bottom:26px}.upcoming{margin-top:24px}.filter-count{margin-top:8px}
+@media(min-width:1100px){.main{padding-top:32px}.product-photo{height:180px}.details-photo{height:240px}.card-content{position:relative}.card-content .status{margin-top:11px}.card-title .icon-btn{width:27px;height:23px}.toolbar{margin-bottom:18px}.demo-notice .btn{padding:5px}.deadline-banner{padding:12px 18px}}
+@media(max-width:700px){.nav button,.data-nav{font-size:9px}.metric-label{font-size:11px}.metric strong{font-size:27px}.summary{padding:0}.demo-notice{margin-bottom:22px}.date-row{font-size:11px}.btn{font-size:13px}.card-content h3{font-size:16px}.card-store{font-size:12px}}
+@media(max-width:450px){.product-photo{height:215px}.card-content h3{font-size:18px}.card-store,.date-row{font-size:13px}}
